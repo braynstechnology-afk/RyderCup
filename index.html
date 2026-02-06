@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Ryder Cup - Team Taiwan vs Team Korea</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">🏌️ Ryder Cup History</h1>
+            <p class="subtitle">Team Taiwan vs Team Korea</p>
+            <div class="teams-showcase">
+                <div class="team-badge team-taiwan">
+                    <h2>🇹🇼 Team Taiwan</h2>
+                    <div class="team-photos">
+                        <div class="player-photo">
+                            <img id="bryan-photo" src="images/bryan-leong.jpg" alt="Bryan Leong" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="photo-placeholder" style="display:none;">👤</div>
+                        </div>
+                        <div class="player-photo">
+                            <img id="rich-photo" src="images/rich-tsai.jpg" alt="Rich Tsai" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="photo-placeholder" style="display:none;">👤</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Bryan Leong</li>
+                        <li>Rich Tsai</li>
+                    </ul>
+                </div>
+                <div class="vs-divider">
+                    <span>VS</span>
+                </div>
+                <div class="team-badge team-korea">
+                    <h2>🇰🇷 Team Korea</h2>
+                    <div class="team-photos">
+                        <div class="player-photo">
+                            <img id="jamin-photo" src="images/jamin-cho.jpg" alt="Jamin Cho" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="photo-placeholder" style="display:none;">👤</div>
+                        </div>
+                        <div class="player-photo">
+                            <img id="taekyung-photo" src="images/tae-kyung.jpg" alt="Tae Kyung" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="photo-placeholder" style="display:none;">👤</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Jamin Cho</li>
+                        <li>Tae Kyung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <h2>The Battle for Golf Glory</h2>
+            <p>Welcome to the annual Ryder Cup between four friends, where passion, skill, and camaraderie meet on the green. Each year brings new challenges, epic matches, and unforgettable moments.</p>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Cups</h3>
+                    <p class="stat-number" id="total-cups">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Team Taiwan Wins</h3>
+                    <p class="stat-number" id="taiwan-wins">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Team Korea Wins</h3>
+                    <p class="stat-number" id="korea-wins">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Most Recent</h3>
+                    <p class="stat-number" id="recent-year">-</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="years-section">
+            <h2>Yearly Ryder Cup Stories</h2>
+            <div class="years-container" id="years-container">
+                <!-- Yearly stories will be dynamically added here -->
+            </div>
+        </section>
+
+        <section class="add-year-section">
+            <h2>Add a New Year</h2>
+            <form id="year-form" class="year-form">
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="number" id="year" name="year" min="2000" max="2100" required>
+                </div>
+                <div class="form-group">
+                    <label for="winner">Winner:</label>
+                    <select id="winner" name="winner" required>
+                        <option value="">Select Winner</option>
+                        <option value="Taiwan">🇹🇼 Team Taiwan</option>
+                        <option value="Korea">🇰🇷 Team Korea</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="score">Final Score (optional):</label>
+                    <input type="text" id="score" name="score" placeholder="e.g., 15-9">
+                </div>
+                <div class="form-group">
+                    <label for="story">Story:</label>
+                    <textarea id="story" name="story" rows="6" placeholder="Tell the tale of this year's Ryder Cup..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="highlight">Highlight Moment (optional):</label>
+                    <input type="text" id="highlight" name="highlight" placeholder="e.g., Hole-in-one on 17th">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL (optional):</label>
+                    <input type="url" id="image" name="image" placeholder="https://example.com/image.jpg">
+                    <small>Enter a URL to a photo from this year's Ryder Cup</small>
+                </div>
+                <button type="submit" class="btn-submit">Add Year</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Golf Ryder Cup - A Friendship Competition</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
