@@ -9,34 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Form submission
     document.getElementById('year-form').addEventListener('submit', handleFormSubmit);
+    
+    // Delete button (event delegation)
+    document.getElementById('years-container').addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-delete')) {
+            const year = parseInt(e.target.dataset.year);
+            deleteYear(year);
+        }
+    });
 });
 
-// Load years from localStorage or use sample data
+// Load years from localStorage
 function loadYears() {
     const stored = localStorage.getItem('ryderCupYears');
     if (stored) {
         ryderCupYears = JSON.parse(stored);
+        // Remove old example entry if it was saved
+        ryderCupYears = ryderCupYears.filter(y => !(y.year === 2010 && y.winner === 'Tied'));
+        if (ryderCupYears.length !== JSON.parse(stored).length) {
+            saveYears();
+        }
     } else {
-        // Sample data for demonstration
-        ryderCupYears = [
-            {
-                year: 2023,
-                winner: 'Taiwan',
-                score: '14-10',
-                story: 'The inaugural Ryder Cup saw Team Taiwan take an early lead with Bryan Leong\'s impressive putting game. Rich Tsai\'s consistent drives kept the momentum going. Team Korea fought hard, with Jamin Cho making a remarkable comeback on the back nine, but it wasn\'t enough to overcome the Taiwanese advantage.',
-                highlight: 'Bryan Leong\'s eagle on the 12th hole',
-                image: ''
-            },
-            {
-                year: 2024,
-                winner: 'Korea',
-                score: '13-11',
-                story: 'Team Korea came back with a vengeance this year. Tae Kyung\'s precision shots and Jamin Cho\'s strategic play proved to be the winning combination. The match went down to the wire, with the final holes deciding the champion. A truly epic battle that showcased the best of both teams.',
-                highlight: 'Jamin Cho\'s clutch birdie on the 18th to secure the win',
-                image: ''
-            }
-        ];
-        saveYears();
+        ryderCupYears = [];
     }
 }
 
@@ -83,6 +77,7 @@ function createYearCard(data) {
                     <strong>⚡ Highlight Moment:</strong> ${data.highlight}
                 </div>
             ` : ''}
+            <button type="button" class="btn-delete" data-year="${data.year}" aria-label="Delete Ryder Cup ${data.year}">Delete</button>
         </div>
     `;
 }
@@ -100,6 +95,15 @@ function updateStats() {
     document.getElementById('taiwan-wins').textContent = taiwanWins;
     document.getElementById('korea-wins').textContent = koreaWins;
     document.getElementById('recent-year').textContent = recentYear;
+}
+
+// Delete a year
+function deleteYear(year) {
+    if (!confirm(`Delete Ryder Cup ${year}?`)) return;
+    ryderCupYears = ryderCupYears.filter(y => y.year !== year);
+    saveYears();
+    displayYears();
+    updateStats();
 }
 
 // Handle form submission

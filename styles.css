@@ -296,6 +296,22 @@ section {
     color: #856404;
 }
 
+.btn-delete {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
 .empty-state {
     text-align: center;
     padding: 3rem;
